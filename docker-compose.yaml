@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - "27019:27017"
+
+  auto-crudeable-service:
+    image: 'cammd21/auto-crudeable:1.0'
+    container_name: 'auto-crudeable-service'
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017
+      - MONGODB_DBNAME=database
+    ports:
+      - "4646:8080"
+    depends_on:
+      - mongodb
+
+volumes:
+  mongodb_data:
