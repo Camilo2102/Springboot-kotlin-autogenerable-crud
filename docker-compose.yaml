@@ -9,8 +9,8 @@ services:
       - "27019:27017"
 
   auto-crudeable-service:
-    image: 'cammd21/auto-crudeable:1.0'
-    container_name: 'auto-crudeable-service'
+    image: '${IMANGE-NAME}'
+    container_name: '${TYPE-NAME}'
     environment:
       - MONGODB_URI=mongodb://mongodb:27017
       - MONGODB_DBNAME=database
